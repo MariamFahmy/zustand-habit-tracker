@@ -1,6 +1,7 @@
 import {Box, Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {useState} from 'react';
 import useHabitStore from "../store/store.ts";
+import * as React from "react";
 
 const AddHabitForm = () => {
     const [name, setName] = useState("");
@@ -10,7 +11,7 @@ const AddHabitForm = () => {
 
     console.log(habits);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.SubmitEvent) => {
         e.preventDefault();
         if (name.trim()) {
             addHabit(name, frequency);
