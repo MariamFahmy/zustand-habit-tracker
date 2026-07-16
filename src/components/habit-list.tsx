@@ -13,15 +13,15 @@ const HabitList = () => {
         <Box sx={{display: "flex", flexDirection: "column", gap: 2, mt: 4}}>
             {habits.map((habit) => (
                 <Paper key={habit.id} elevation={2} sx={{p: 2}}>
-                    <Grid container alignItems="center">
-                        <Grid xs={12} sm={6}>
+                    <Grid container>
+                        <Grid>
                             <Typography variant="h6">{habit.name}</Typography>
                             <Typography variant="body2" color="text.secondary">
                                 {habit.frequency}
                             </Typography>
                         </Grid>
                     </Grid>
-                    <Grid xs={12} sm={6}>
+                    <Grid>
                         <Box sx={{display: "flex", justifyContent: "flex-end", gap: 1}}>
                             <Button variant="outlined"
                                     color={habit.completedDates.includes(today) ? "success" : "primary"}
