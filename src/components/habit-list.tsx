@@ -1,8 +1,13 @@
 import {Box, Button, Grid, Paper, Typography} from "@mui/material";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import DeleteIcon from '@mui/icons-material/Delete'
 import useHabitStore from "../store/store.ts";
 
 const HabitList = () => {
     const {habits} = useHabitStore();
+
+    // Separate date and time using .split("T"), then take the date using [0]
+    const today = new Date().toISOString().split("T")[0];
 
     return (
         <Box sx={{display: "flex", flexDirection: "column", gap: 2, mt: 4}}>
@@ -18,10 +23,20 @@ const HabitList = () => {
                     </Grid>
                     <Grid xs={12} sm={6}>
                         <Box sx={{display: "flex", justifyContent: "flex-end", gap: 1}}>
-                            <Button variant="outlined">
-                                Mark As Completed
+                            <Button variant="outlined"
+                                    color={habit.completedDates.includes(today) ? "success" : "primary"}
+                                    startIcon={<CheckCircleIcon />}
+                            >
+                                {
+                                    habit.completedDates.includes(today)
+                                    ? "Completed" : "Mark Complete"
+                                }
                             </Button>
-                            <Button variant="outlined" color="error">
+                            <Button
+                                variant="outlined"
+                                color="error"
+                                startIcon={<DeleteIcon />}
+                            >
                                 Remove
                             </Button>
                         </Box>
